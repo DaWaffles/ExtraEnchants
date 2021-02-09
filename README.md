@@ -7,5 +7,6 @@ Adds Looting and Fortune into pocketmine.
 • Smite
 • Bane of arthropods 
 
-
+# Works with
+buger spawners 
 note this is forked from Cryptic Core and Vanilla Enchant, edited and fixed.
