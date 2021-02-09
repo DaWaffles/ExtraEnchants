@@ -1,6 +1,6 @@
 ---
 name: ExtraEnchants
 version: 0.0.1
-main: src/DaWaffles/ExtraEnchants/Main.php
+main: DaWaffles/ExtraEnchants/Main
 api: 3.17.3
 ...
