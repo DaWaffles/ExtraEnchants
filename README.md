@@ -1,4 +1,4 @@
-# ExtraEnchants
+A# ExtraEnchants
 Adds Looting and Fortune into pocketmine.
 
 # Added 
@@ -8,5 +8,7 @@ Adds Looting and Fortune into pocketmine.
 • Bane of arthropods 
 
 # Works with
-buger spawners 
+buger spawners (https://github.com/Heisenburger69/BurgerSpawners)
+
+
 note this is forked from Cryptic Core and Vanilla Enchant, edited and fixed.
