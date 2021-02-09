@@ -1,0 +1,6 @@
+---
+name: ExtraEnchants
+version: 0.0.1
+main: DaWaffles\ExtraEnchants\Main
+api: 3.17.3
+...
