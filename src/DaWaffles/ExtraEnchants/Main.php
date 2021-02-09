@@ -32,6 +32,22 @@ class Main extends PluginBase implements Listener{
 		Block::LAPIS_ORE,
 		Block::NETHER_QUARTZ_ORE
 	];
+	const UNDEAD = [
+			Entity::ZOMBIE,
+			Entity::HUSK,
+			Entity::WITHER,
+			Entity::SKELETON,
+			Entity::STRAY,
+			Entity::WITHER_SKELETON,
+			Entity::ZOMBIE_PIGMAN
+	];
+	
+	const ARTHROPODS = [
+			Entity::SPIDER,
+			Entity::CAVE_SPIDER,
+			Entity::SILVERFISH,
+			Entity::ENDERMITE
+	];
 	
 	public function onLoad(){
     $this->getLogger()->info(TextFormat::GREEN . "Loading Plugin!");
@@ -45,6 +61,8 @@ class Main extends PluginBase implements Listener{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		Enchantment::registerEnchantment(new Enchantment(Enchantment::LOOTING, 'Looting', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_ALL, Enchantment::SLOT_NONE, 3));
 		Enchantment::registerEnchantment(new Enchantment(Enchantment::FORTUNE, 'Fortune', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_ALL, Enchantment::SLOT_NONE, 3));
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::SMITE, 'Smite', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_ALL, Enchantment::SLOT_NONE, 5));
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::BANE_OF_ARTHROPODS, 'Bane of arthropods', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_ALL, Enchantment::SLOT_NONE, 5));
 		}
 	/**
 	 * @param BlockBreakEvent $event
@@ -98,7 +116,7 @@ class Main extends PluginBase implements Listener{
 	/**
 	 * @param EntityDamageEvent $event
 	 */
-	public function onEntityDamage(EntityDamageEvent $event) : void{
+	public function onLooting(EntityDamageEvent $event) : void{
 		if($event->isCancelled()){
 			return;
 		}
@@ -124,5 +142,23 @@ class Main extends PluginBase implements Listener{
 			}
 		}
 	}
+	public function onSmiteAndBane(EntityDamageByEntityEvent $event) : void{
+			if($event->isCancelled()){
+				return;
+			}
+			$player = $event->getEntity();
+			if(($damager = $event->getDamager()) instanceof Player){
+				if(($level = $damager->getInventory()->getItemInHand()->getEnchantmentLevel(Enchantment::SMITE)) > 0){
+					if(in_array($player::NETWORK_ID, self::UNDEAD)){
+						$event->setBaseDamage($event->getBaseDamage() + (2.5 * $level));
+					}
+				}
+				if(($level = $damager->getInventory()->getItemInHand()->getEnchantmentLevel(Enchantment::BANE_OF_ARTHROPODS)) > 0){
+					if(in_array($player::NETWORK_ID, self::ARTHROPODS)){
+						$event->setBaseDamage($event->getBaseDamage() + (2.5 * $level));
+					}
+				}
+			}
+		}
 
 }
