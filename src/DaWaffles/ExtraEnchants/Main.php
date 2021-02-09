@@ -12,6 +12,8 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityDeathEvent;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\entity\Human;
+use pocketmine\entity\Entity;
+use pocketmine\entity\Living;
 use pocketmine\block\Block;
 use pocketmine\item\Item;
 use pocketmine\utils\TextFormat;
