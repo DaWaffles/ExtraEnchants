@@ -6,4 +6,6 @@ Adds Looting and Fortune into pocketmine.
 • Fortune
 • Smite
 • Bane of arthropods 
+
+
 note this is forked from Cryptic Core and Vanilla Enchant, edited and fixed.
