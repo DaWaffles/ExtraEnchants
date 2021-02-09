@@ -30,6 +30,14 @@ class Main extends PluginBase implements Listener{
 		Block::NETHER_QUARTZ_ORE
 	];
 	
+	public function onLoad(){
+    $this->getLogger()->info(TextFormat::GREEN . "Loading Plugin!");
+    }
+
+  public function onDisable(){
+    $this->getLogger()->info(TextFormat::RED . "Plugin Disabled!");
+    }
+	
 	public function onEnable(){
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		Enchantment::registerEnchantment(new Enchantment(Enchantment::LOOTING, 'Looting', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_ALL, Enchantment::SLOT_NONE, 3));
