@@ -1,4 +1,9 @@
 # ExtraEnchants
 Adds Looting and Fortune into pocketmine.
 
-note this is forked from Cryptic Core edited and fixed.
+# Added 
+• Looting 
+• Fortune
+• Smite
+• Bane of arthropods 
+note this is forked from Cryptic Core and Vanilla Enchant, edited and fixed.
